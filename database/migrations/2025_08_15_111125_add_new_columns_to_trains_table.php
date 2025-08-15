@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('trains', function (Blueprint $table) {
-            $table->timestamp("departure_time")->after("arrival_station");
-            $table->timestamp("arrival_time")->after("departure_time");
+            $table->time("departure_time")->after("arrival_station");
+            $table->time("arrival_time")->after("departure_time");
             $table->string("train_code")->after("arrival_time");
             $table->integer("train_total_coaches")->after("train_code");
             $table->boolean("in_time")->after("train_total_coaches");
