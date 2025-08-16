@@ -17,12 +17,12 @@ $today = date("Y-m-d");
         <h1 class="text-center my-3">Treni in partenza oggi</h1>
         <div class="row g-3">
             @foreach($trains as $train)
-            @if($train->departure_date >= $today)
+
             <div class="col">
                 <div class="card" style="width: 18rem;">
 
                     <div class="card-body">
-                        <h5 class="card-title">{{$train->company}} {{$train->train_code}} </h5>
+                        <h5 class="card-title">{{$train->company}} <br> {{$train->train_code}} </h5>
                         <p class="card-text">Diretto a {{$train->arrival_station}}</p>
                         <p class="card-text">Partirà alle {{$train->departure_time}}</p>
                         @if($train->in_time)
@@ -30,13 +30,13 @@ $today = date("Y-m-d");
                         @else
                         <p class="card-text">IN RITARDO</p>
                         @endif
-                        @if($train->is_deleted)
+                        @if($train->is_deleted && !$train->in_time)
                         <p class="card-text">CANCELLATO</p>
                         @endif
                     </div>
                 </div>
             </div>
-            @endif
+
             @endforeach
         </div>
     </div>
